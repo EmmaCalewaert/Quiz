@@ -49,7 +49,7 @@ class Quiz
     i = 0
     while i < amountOfQuestions
       question = questions[i]
-      puts question.question.join()
+      question.askQuestion
       answer = gets.chomp().upcase
       if question.correctAnswer?(answer)
         puts "Correct!"

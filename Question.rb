@@ -8,4 +8,8 @@ class Question
   def correctAnswer?(answer)
     @answer==answer
   end
+
+  def askQuestion
+    puts question.join()
+  end
 end
