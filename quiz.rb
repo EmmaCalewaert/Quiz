@@ -19,9 +19,32 @@ class Quiz
     questions.shuffle!
   end
 
-  def run_quiz
+  def setAmountOfQuestions
     puts "How many questions?"
     amountOfQuestions = gets.to_i
+    if(amountOfQuestions > questions.length)
+      puts "Too many questions; not that many in list. Please enter a smaller number. (Max: " + questions.length.to_s + ")"
+      setAmountOfQuestions
+    end
+    return amountOfQuestions
+  end
+
+  def playAgain
+    puts "Play again? Y/N"
+    reply = gets.chomp.upcase
+    if reply == 'Y'
+      questions.shuffle!
+      return true
+    elsif reply == 'N'
+      return false
+    else
+      puts "Invalid input, try again."
+      playAgain
+    end
+  end
+
+  def run_quiz
+    amountOfQuestions = setAmountOfQuestions
     score = 0
     i = 0
     while i < amountOfQuestions
@@ -37,5 +60,8 @@ class Quiz
       i += 1
     end
     puts "you got #{score} out of #{amountOfQuestions}"
+    if(playAgain)
+      run_quiz
+    end
   end
 end
