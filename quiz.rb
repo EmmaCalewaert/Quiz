@@ -55,7 +55,7 @@ class Quiz
         puts "Correct!"
         score += 1
       elsif
-      puts "Wrong!"
+      puts "Wrong! The answer was " + question.answer + "."
       end
       i += 1
     end
